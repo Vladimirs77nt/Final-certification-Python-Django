@@ -67,3 +67,13 @@ Watching for file changes with StatReloader
 "GET /authorization/ HTTP/1.1" 200 39
 "GET /registrtion HTTP/1.1" 301 0
 "GET /registrtion/ HTTP/1.1" 200 39
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 797
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2984
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 797
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2984
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2984
