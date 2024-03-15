@@ -5,7 +5,7 @@ def index(request):
    return render(request, 'recipe_app/index.html')
 
 def recipe_all(request):
-   return HttpResponse("Страница - ВСЕ РЕЦЕПТЫ")
+   return render(request, 'recipe_app/recipe_all.html')
 
 def recipe(request):
    return HttpResponse("Страница - РЕЦЕПТ №... ")
