@@ -46,17 +46,17 @@ class Category(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField()
-    ingredients = models.CharField(max_length=128)
+    ingredients = models.TextField()
     steps_cooking = models.TextField()
-    time_for_cooking = models.TimeField()
-    photo = models.ImageField()
+    time_for_cooking = models.IntegerField()
+    photo = models.ImageField(upload_to='images/')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     date_add = models.DateField(auto_now_add=True)
     date_edit = models.DateField(auto_now=True)
     categories = models.ManyToManyField(Category)
     
     def __str__(self):
-        return f'{self.title}, author: {self.author.fullname}'
+        return f'{self.title} ({self.author})'
 
 """
 ---------------------------------------------------------------------------------
