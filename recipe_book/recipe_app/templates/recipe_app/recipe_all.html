@@ -5,10 +5,10 @@
 {% block content %}
     <h3>Все рецепты</h3>
     <table>
-        <!-- {% for recipe in recipes %}
+        {% for recipe in recipes %}
             <tr>
-                <td><a href="{% url 'recipe' recipe.id %}">{{ recipe.title }}</a>
+                <td><a href="{% url 'recipe_id' recipe.id %}">{{ recipe.title }}</a>
             </tr>
-        {% endfor %} -->
+        {% endfor %}
     </table>
 {% endblock %}

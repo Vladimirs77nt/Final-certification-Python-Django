@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Все статьи{% endblock %}
+
+{% block content %}
+    <h2>Все статьи</h2>
+    <table>
+        {% for post in posts %}
+            <tr>
+                {% if post.ispublic %}
+                    <td><a href="{% url 'post_full' post.id %}">{{ post.title }}</a>
+                {% else %}
+                    <td><a>{{ post.title }}</a>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Товар {{ recipe.name }}, ID:{{ recipe.id }}{% endblock %}
+{% block title %}Рецепт: {{ recipe.name }}{% endblock %}
 
 {% block content %}
 
-<h4>Товар: {{ recipe.title }}  (Id:{{ recipe.id }})</h4>
+<!-- ФОРМА ИЗМЕНЕНИЯ РЕЦЕПТА -->
+
+<h4>Рецепт: {{ recipe.title }}</h4>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Изменить данные о рецепте">
     {% if recipe.image %}
-      <img src="{{ recipe.image.url }}" height="200" alt="фото">
+      <img src="{{ recipe.image.url }}" height="200" alt="фото блюда">
     {% else %}
       <h3>фото для рецепта не загружено</h3>
     {% endif %}

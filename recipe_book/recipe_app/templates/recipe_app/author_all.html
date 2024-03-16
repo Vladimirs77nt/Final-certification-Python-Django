@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Все авторы{% endblock %}
+
+{% block content %}
+    <h2>Все авторы</h2>
+    <table>
+        {% for author in authors %}
+            <tr>
+                {% if author.name %}
+                    <td><a href="{% url 'author_id' author.id %}">{{ author.name }}</a>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -13,7 +13,7 @@ class Author(models.Model):
     email = models.EmailField(unique=True)
     about = models.TextField()
     birthday = models.DateField()
-    date_reg = models.DateField()
+    date_reg = models.DateField(auto_now=True)
     
     def __str__(self):
         return self.name
@@ -77,3 +77,28 @@ class Records(models.Model):
 
     def __str__(self):
         return f'{self.category} {self.recipe}'
+    
+"""
+---------------------------------------------------------------------------------
+модель Комментарий (к рецепту).
+Авторы могут добавлять комментарии к своим и чужим рецептам.
+Т.е. у комментария может быть один автор. И комментарий относится к одному рецепту.
+У модели следующие поля:
+    ○ автор
+    ○ рецепт
+    ○ комментарий
+    ○ дата создания
+"""  
+class Comment2(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    date_create = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        words = self.content.split()
+        return f'Комментарий [{self.pk}], рецепт: {self.recipe.title} | автор: {self.author.name} |  комментарий: {" ".join(words[:8])}...'
+    
+    def get_summary(self):
+        words = self.content.split()
+        return f'{" ".join(words[:12])}...'

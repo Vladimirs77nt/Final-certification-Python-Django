@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+<!-- ВЫВОД ИНФОРМАЦИИ О РЕЦЕПТЕ с формой редактирования комментариев -->
+
+{% block content %}
+    <h3>Автор: {{ author_name }}</h3>
+    <h3>Рецепт: {{ recipe.title }}</h3>
+    <h3>Дата добавления: {{ recipe.date_add }}</h3>
+    <p>{{ recipe.content }}</p>
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Добавить комментарий">
+        </form>
+
+    {% if comments %}
+        <br><p>&emsp;&emsp;Комментарии:</p>
+        {% for comment in comments %}
+            <h5>&emsp; {{ comment.author.name }}, {{ comment.date_create }}</h5>
+            <p>&emsp; {{ comment.content }} </p>
+        {% endfor %}
+        <br>
+    {% endif %}
+{% endblock %}
