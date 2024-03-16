@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление рецепта{% endblock %}
+
+{% block content %}
+
+<!-- ФОРМА ДОБАВЛЕНИЯ РЕЦЕПТА -->
+
+    <h3>{{ message }}</h3>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Добавить рецепт">
+    </form>
+
+{% endblock %}

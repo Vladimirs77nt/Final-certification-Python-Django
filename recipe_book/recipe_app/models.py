@@ -51,7 +51,7 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     steps_cooking = models.TextField()
     time_for_cooking = models.IntegerField()
-    photo = models.ImageField(upload_to='images/')
+    photo = models.ImageField()
     date_add = models.DateField(auto_now_add=True)
     date_edit = models.DateField(auto_now=True)
     categories = models.ManyToManyField(Category)
@@ -88,8 +88,8 @@ class Records(models.Model):
     ○ рецепт
     ○ комментарий
     ○ дата создания
-"""  
-class Comment2(models.Model):
+
+class Comment(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
@@ -102,3 +102,4 @@ class Comment2(models.Model):
     def get_summary(self):
         words = self.content.split()
         return f'{" ".join(words[:12])}...'
+"""

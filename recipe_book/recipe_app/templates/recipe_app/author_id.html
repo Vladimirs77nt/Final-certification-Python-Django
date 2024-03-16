@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Рецепты от {{ author.name }}{% endblock %}
+
+{% block content %}
+    <h4>Автор: {{ author.name }}</h4>
+    <h5>об авторе: {{ author.about }}</h5>
+    <h5>День рождения: {{ author.birthday }}</h5>
+    <h5>Дата регистрации: {{ author.date_reg }}</h5>
+
+    {% if recipes %}
+        <h4>рецепты автора:</h4>
+        <table>
+            {% for recipe in recipes %}
+                <tr>
+                    <td><a href="{% url 'recipe_id' recipe.id %}">{{ recipe.title }}</a>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h5>...автор еще не написал рецептов...</h5>
+    {% endif %}
+{% endblock %}

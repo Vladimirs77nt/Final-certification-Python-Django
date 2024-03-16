@@ -31,7 +31,6 @@ class RecipeForm (forms.ModelForm):
                   'aboutime_for_cookingt': 'Время приготовления',
                   'photo': 'Фото блюда',
                   'author': 'Автор',
-                  'date_add': 'Дата добаления рецепта',
                   }
         
 class CategoryForm (forms.ModelForm):

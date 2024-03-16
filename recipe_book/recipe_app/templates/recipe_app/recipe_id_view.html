@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Рецепт: {{ recipe.name }}{% endblock %}
+
+{% block content %}
+
+<!-- ОТОБРАЖЕНИЕ РЕЦЕПТА без редактирования -->
+
+    <h4>Автор: {{ author.name }}</h4>
+    <h4>Рецепт: {{ recipe.title }}</h4>
+    <h6>Дата добавления: {{ recipe.date_add }}</h6>
+    <h5>Описание: {{ recipe.description }}</h5>
+    <h5>Время приготовления: {{ recipe.time_for_cooking }} мин.</h5>
+    <h5>Инградиенты: {{ recipe.ingredients }}</h5>
+    <h5>Шаги приготовления: {{ recipe.steps_cooking }}</h5>
+    <br>
+    {% if recipe.photo %}
+      <img src="{{ recipe.photo.url }}" height="200" alt="фото блюда">
+    {% else %}
+      <h3>фото для рецепта не загружено</h3>
+    {% endif %}
+    <h5>Дата добавления: {{ recipe.date_add }}</h5>
+  </form>
+
+{% endblock %}
