@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+  <h2>Вы вышли из системы!</h2>
+  <div class="border-top pt-3">
+    <a class="text-muted" href="{% url 'authorization' %}">Войдите снова сюда.</a>
+  </div>
+</div>
+
+{% endblock content %}

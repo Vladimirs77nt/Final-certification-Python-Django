@@ -1,3 +1,4 @@
+import random
 from django.db import models
 
 """
@@ -9,11 +10,16 @@ from django.db import models
     ○ birthday: день рождения автора
 """
 class Author(models.Model):
+    username = models.CharField(max_length=128, unique=True)
     name = models.CharField(max_length=128, unique=True)
     email = models.EmailField(unique=True)
     about = models.TextField()
     birthday = models.DateField()
     date_reg = models.DateField(auto_now=True)
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = []
+    set_password = models.CharField(max_length=64)
     
     def __str__(self):
         return self.name
@@ -54,7 +60,7 @@ class Recipe(models.Model):
     photo = models.ImageField()
     date_add = models.DateField(auto_now_add=True)
     date_edit = models.DateField(auto_now=True)
-    categories = models.ManyToManyField(Category)
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     
     def __str__(self):
         return f'{self.title} ({self.author})'

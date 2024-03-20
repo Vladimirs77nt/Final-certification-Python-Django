@@ -1,13 +1,12 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from .models import Author, Category, Recipe
 
 class AuthorForm (forms.ModelForm):
     class Meta:
         model = Author
-
         # исключаемые поля
         exclude = []
-
         # названия полей
         labels = {'name': 'Имя',
                   'email': 'Электронная почта',
@@ -16,6 +15,24 @@ class AuthorForm (forms.ModelForm):
                   'date_reg': 'Дата регистрации',
                   }
         
+class UserRegisterForm(UserCreationForm):
+  email = forms.EmailField()
+
+  class Meta:
+    model = Author
+    fields = ['username', 'email', 'password1', 'password2']
+    # названия полей
+    labels = {'username': 'Логин'}
+
+class UserLoginForm(UserCreationForm):
+  email = forms.EmailField()
+
+  class Meta:
+    model = Author
+    fields = ['username', 'email', 'password1']
+    # названия полей
+    labels = {'username': 'Логин'}
+
 class RecipeForm (forms.ModelForm):
     class Meta:
         model = Recipe
@@ -44,7 +61,3 @@ class CategoryForm (forms.ModelForm):
         labels = {'name': 'Категория',
                   'description': 'Краткое описание',
                   }
-        
-class CommentForm (forms.Form):
-    author = forms.ModelChoiceField(queryset=Author.objects.all(), label="Выберите автора")
-    content = forms.CharField(widget=forms.Textarea, label="комментарий")

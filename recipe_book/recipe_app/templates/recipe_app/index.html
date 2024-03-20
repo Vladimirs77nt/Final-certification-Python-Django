@@ -4,4 +4,26 @@
 
 {% block content %}
     <h3>Главная страница</h3>
+    Нам нравится вдохновлять людей. Если, открыв наш сайт, Вы захотели что-то приготовить, поехать в путешествие или изменить жизнь, значит, цель достигнута!<br>
+    Это сайт о хороших рецептах с пошаговой инструкцией, о секретах и кулинарных трюках и не только...</p>
+
+    <h4>Три случайных рецепта</h4>
+    <table>
+        {% for recipe in recipes %}
+            <ul>
+                <li><a href="{% url 'recipe_id' recipe.id %}">{{ recipe.title }}</a>
+            </ul>
+        {% endfor %}
+    </table>
+
+    <h4>Три случайных автора</h4>
+    <table>
+        {% for author in authors %}
+            <ul>
+                {% if author.name %}
+                    <li><a href="{% url 'author_id' author.id %}">{{ author.name }}</a>
+                {% endif %}
+            </ul>
+        {% endfor %}
+    </table>
 {% endblock %}

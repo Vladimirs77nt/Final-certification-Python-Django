@@ -30,6 +30,9 @@ ALLOWED_HOSTS = [
  '192.168.1.42',
 ]
 
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'authorization'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,8 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'crispy_forms',
+    # 'bootstrap4',
     'recipe_app',
+    'users'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -115,7 +123,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
